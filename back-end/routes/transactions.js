@@ -1,12 +1,9 @@
 const express = require('express');
 const router = express.Router();
-
-const homeRoute = router.get('/', (req,res,next) =>{
-    res.send('Hello HomePage');
-})
+const { addIncomeController } = require('../controllers/income');
 
 
-module.exports = 
-{
-    homeRoute,
-}
+ router.post('/add-income', addIncomeController);
+
+
+module.exports =  router
