@@ -26,7 +26,7 @@ const config = {
   }
 }
 
-const Graph = () => {
+export default function Graph() {
   return (
     <div className='flex jutify-content max-w-xs mx-auto'>
       <div className='item'>
@@ -47,4 +47,3 @@ const Graph = () => {
   )
 }
 
-export default Graph
