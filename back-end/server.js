@@ -3,7 +3,6 @@ const http =  require('http');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const dbConnection = require('./db/db');
-const {transactionsRoute} =require('./routes/index');
 const bodyParser = require('body-parser');
 
 dotenv.config();
@@ -24,11 +23,8 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended:true}));
 
 //Routes
-app.use('/api/v1/', transactionsRoute );
+app.use('/api/v1/',  );
 
-app.get('/', (req,res) =>{
-    res.send('this is a get request');
-})
 
 app.listen(port, () =>{
     console.log(`You are listening to port : ${port}`);
