@@ -23,7 +23,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended:true}));
 
 //Routes
-app.use('/api/v1/',  );
+app.use( require('./routes/route'));
 
 
 app.listen(port, () =>{
