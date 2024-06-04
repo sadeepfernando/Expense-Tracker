@@ -74,13 +74,14 @@ const deleteTransaction = async(req, res) =>{
      
 }
 
-const getLabels = (req, res) =>{
+const getLabels = async(req, res) =>{
 
     //Connectig transaction and the categories to get the transactions history
-    Transaction.aggregate([
+    try{
+    let categoryInfo = await Transaction.aggregate([
         {
             $lookup :{
-                from:'category',
+                from:'categories',
                 localField: 'type',
                 foreignField: 'type',
                 as: 'category_Info'
@@ -88,14 +89,19 @@ const getLabels = (req, res) =>{
         },
         {
             $unwind: '$category_Info'
-        }
-    ]).then(result =>{
-        res.json(result);
+        }  
+    ])
 
-    }).catch(error =>{
-        res.status(404).json({message: `Lookup connection error: ${error}`});
+    let TransactionHistory = categoryInfo.map(v =>
+        Object.assign({}, {_id:v._id, name:v.name, type:v.type, amount:v.amount, color:v.category_Info['color']}));
+    res.json(TransactionHistory);
 
-    });
+    }catch(error){
+
+        res.json({message:`Aggregation faild: ${error}`});
+    }
+
+    
 }
 
 
