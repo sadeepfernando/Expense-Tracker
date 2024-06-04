@@ -61,6 +61,42 @@ const getTransactions = async(req, res) =>{
     .json({code:200, status:true, message:'Transactions found successfully',data: transactions});
 }
 
+const deleteTransaction = async(req, res) =>{
+    const { _id } = req.body;
+     if(!_id){
+        res.code = 400;
+        throw new Error('Id not found');
+     }
+
+     await Transaction.findByIdAndDelete(_id);
+     res.status(200)
+     .json({code:200, status:true, message:'Transaction deleted successfully'});
+     
+}
+
+const getLabels = (req, res) =>{
+
+    //Connectig transaction and the categories to get the transactions history
+    Transaction.aggregate([
+        {
+            $lookup :{
+                from:'category',
+                localField: 'type',
+                foreignField: 'type',
+                as: 'category_Info'
+            }
+        },
+        {
+            $unwind: '$category_Info'
+        }
+    ]).then(result =>{
+        res.json(result);
+
+    }).catch(error =>{
+        res.status(404).json({message: `Lookup connection error: ${error}`});
+
+    });
+}
 
 
 module.exports =
@@ -69,4 +105,6 @@ module.exports =
     getCategories,
     createTransactions,
     getTransactions,
+    deleteTransaction,
+    getLabels
 }
