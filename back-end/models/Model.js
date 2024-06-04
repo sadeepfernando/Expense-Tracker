@@ -8,7 +8,6 @@ const categorySchema = new Schema({
     color : {type:String, default:'#FCBE44'}
 });
 
-const Category = mongoose.model('category', categorySchema);
 
 
 //Create a model for transactions with (name,  type,amount,date)
@@ -20,6 +19,7 @@ const transactionSchema = new Schema({
 });
 
 const Transaction = mongoose.model('transaction', transactionSchema);
+const Category = mongoose.model('category', categorySchema);
 
 exports.default = Transaction;
 module.exports = {Category, Transaction}

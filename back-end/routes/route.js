@@ -3,7 +3,7 @@ const router = express.Router();
 const categories = require('../controllers/controller')
 
 
-router.route('/api/categories').get(categories.getCategories);
+router.route('/api/categories').post(categories.getCategories);
 
 
 
