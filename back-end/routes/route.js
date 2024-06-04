@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const categories = require('../controllers/controller')
 
-router.route('/api/categories').get((req, res) =>{
-    res.json({message:'This is a get route'});
-})
+
+router.route('/api/categories').get(categories.getCategories);
 
 
 
