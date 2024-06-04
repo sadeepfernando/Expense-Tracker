@@ -93,7 +93,8 @@ const getLabels = async(req, res) =>{
     ])
 
     let TransactionHistory = categoryInfo.map(v =>
-        Object.assign({}, {_id:v._id, name:v.name, type:v.type, amount:v.amount, color:v.category_Info['color']}));
+                             Object.assign({}, {_id:v._id, name:v.name, type:v.type, amount:v.amount, color:v.category_Info['color']}));
+
     res.json(TransactionHistory);
 
     }catch(error){

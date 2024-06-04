@@ -18,8 +18,8 @@ const transactionSchema = new Schema({
     date : {type:Date, default:Date.now},
 });
 
-const Transaction = mongoose.model('transaction', transactionSchema);
-const Category = mongoose.model('category', categorySchema);
+const Transaction = mongoose.model('transactions', transactionSchema);
+const Category = mongoose.model('categor', categorySchema);
 
 exports.default = Transaction;
 module.exports = {Category, Transaction}
