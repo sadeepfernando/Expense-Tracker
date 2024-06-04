@@ -7,6 +7,10 @@ router.route('/api/categories')
             .post(categories.createCategories)
             .get(categories.getCategories)
 
+router.route('/api/transactions')
+            .post(categories.createTransactions)
+            .get(categories.getTransactions)
+
 
 
 module.exports = router;
