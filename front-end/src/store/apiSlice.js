@@ -4,9 +4,9 @@ const baseURL = 'http://localhost:5000';
 
 export const apiSlice = createApi({
     baseQuery : fetchBaseQuery({baseUrl:baseURL}),
-    endpoints: (builder) => ({
+    endpoints: builder => ({
         getCategories : builder.query({
-            query:() =>'/api/categories'
+            query:() => '/api/categories'
         })
     })
 })
