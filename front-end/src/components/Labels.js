@@ -1,23 +1,6 @@
 import React from 'react';
 import { default as api } from '../store/apiSlice';
 
-const obj =[
-    {
-        type:'Savings',
-        color:'rgb(255, 99, 132)',
-        percent:45
-    },
-    {
-        type:'Investements',
-        color:'rgb(255, 99, 132)',
-        percent:20
-    },
-    {
-        type:'Expenses',
-        color:'rgb(255, 99, 132)',
-        percent:30
-    },
-]
 
 
 export default function Labels() {
