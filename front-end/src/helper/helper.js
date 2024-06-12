@@ -18,15 +18,15 @@ export function getSum(transaction , type){
 }
 
 export function getLabels(transaction){
-    let amountSum = getSum(transaction);
+    let amountSum = getSum(transaction, 'type');
 
-    let total = _.sum(getSum(transaction));
+    let Total = _.sum(getSum(transaction));
 
-    let percentage = _(amountSum)
-                    .map((objs) =>{
-                        _.assign(objs,{percentage :(100 * amountSum)/total })
-                    })
-                    .value();
+    let percent = _(amountSum)
+                    .map(objs =>
+                        _.assign(objs,{percent :(100 * objs.total)/Total })
+                    )
+                    .value()
     
-      return percentage;
+      return percent;
 }
