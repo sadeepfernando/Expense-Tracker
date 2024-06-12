@@ -10,12 +10,11 @@ export default function Form() {
     const { register, handleSubmit, resetField } = useForm();
     const [addTransaction] = api.useAddTransactionMutation();
 
-    const onSubmit = async(data) =>{
+    const onSubmit = (data) =>{
          if(!data)
             return {};
          
-
-         await addTransaction(data).unwrap();
+         addTransaction(data).unwrap();
 
          //Reset the form fields after submission
          resetField('name');

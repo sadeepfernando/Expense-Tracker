@@ -1,5 +1,6 @@
 import React from 'react';
 import { default as api } from '../store/apiSlice';
+import { getLabels  } from '../helper/helper';
 
 
 
@@ -11,9 +12,9 @@ export default function Labels() {
 
     if(isFetching){
         Transactions = <div>Fetching</div>
-    }else if(isSuccess){
-        Transactions = data.map((value, index) => <LabelComponent key={index} data={value}></LabelComponent>)
-        
+    }else if(isSuccess){ 
+        Transactions = getLabels(data,'type')
+                    .map((value, index) => <LabelComponent key={index} data={value}></LabelComponent>)  
     }else if(isError){
         Transactions = <div>Error</div>
     }
