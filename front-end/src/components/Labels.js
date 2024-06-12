@@ -5,14 +5,22 @@ import { default as api } from '../store/apiSlice';
 
 export default function Labels() {
 
-    const{ data, isFetching, isError, isSuccess } = api.useGetCategoriesQuery();
-    console.log(data);
+    const{ data, isFetching, isError, isSuccess } = api.useGetLabelsQuery();
+    
+    let Transactions;
+
+    if(isFetching){
+        Transactions = <div>Fetching</div>
+    }else if(isSuccess){
+        Transactions = data.map((value, index) => <LabelComponent key={index} data={value}></LabelComponent>)
+        
+    }else if(isError){
+        Transactions = <div>Error</div>
+    }
+
   return (
     <>
-    {obj.map((value, index) =>
-        <LabelComponent key={index} data={value}></LabelComponent>
-    )}
-    
+    {Transactions}
     </>
   )
 }
